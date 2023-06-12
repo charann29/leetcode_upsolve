@@ -1,14 +1,18 @@
 class Solution {
 public:
     int countSegments(string s) {
-        istringstream iss(s);
-        string word;
-        int count = 0;
+            int count = 0;
+            bool iS = true;
 
-        while (iss >> word) {
-            count++;
+            for (char c : s) {
+                if (c != ' ') {
+                    if (iS) {
+                        count++;
+                        iS = false;
+                    }
+                } else iS=true;
+            }
+
+            return count;
         }
-
-        return count;    
-    }
 };
