@@ -1,3 +1,4 @@
+
 class Solution {
 public:
     int findCircleNum(vector<vector<int>>& isConnected) {
@@ -7,7 +8,7 @@ public:
 
         for (int i = 0; i < n; ++i) {
             if (!visited[i]) {
-                dfs(isConnected, i, visited);
+                bfs(isConnected, i, visited);
                 provinces++;
             }
         }
@@ -16,19 +17,19 @@ public:
     }
 
 private:
-    void dfs(const vector<vector<int>>& isConnected, int city, vector<bool>& visited) {
+    void bfs(const vector<vector<int>>& isConnected, int city, vector<bool>& visited) {
         int n = isConnected.size();
-        stack<int> stack;
-        stack.push(city);
+        queue<int> queue;
+        queue.push(city);
 
-        while (!stack.empty()) {
-            int currCity = stack.top();
-            stack.pop();
+        while (!queue.empty()) {
+            int currCity = queue.front();
+            queue.pop();
             visited[currCity] = true;
 
             for (int neighbor = 0; neighbor < n; ++neighbor) {
                 if (isConnected[currCity][neighbor] == 1 && !visited[neighbor]) {
-                    stack.push(neighbor);
+                    queue.push(neighbor);
                 }
             }
         }
