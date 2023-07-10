@@ -1,6 +1,6 @@
 class Solution {
     
-    int minFillPos(string& s, char ch, int current = 0) {
+    int minFillPos(string& s, char ch) {
         int count = 0;
         for(int i=0; i<s.size(); i+=2) {
             if(s[i] != ch) count++;
